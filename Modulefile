@@ -1,0 +1,8 @@
+name    'bitlancer-openldap'
+version '0.0.1'
+source 'https://github.com/Bitlancer/puppet-openldap'
+author 'Bitlancer LLC (contact@bitlancer.com)'
+license 'Apache License, Version 2.0'
+summary 'OpenLDAP Puppet Module'
+description 'An OpenLDAP 2.4.x Puppet Module'
+project_page 'https://github.com/Bitlancer/puppet-openldap'
