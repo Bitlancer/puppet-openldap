@@ -24,14 +24,9 @@
 class openldap::server(
   $enabled         = true,
   $package_ensure  = $openldap::package_ensure,
-  $package_name    = $openldap::server_packages,
+  $package_names    = $openldap::server_packages,
   $service_name    = $openldap::service_name
 ) inherits openldap{
-
-  package { 'openldap-server':
-    ensure => $package_ensure,
-    name   => $package_name,
-  }
 
   if $enabled {
     $service_ensure = 'running'
@@ -39,11 +34,12 @@ class openldap::server(
     $service_ensure = 'stopped'
   }
 
+  package { $package_names:
+    ensure => $package_ensure
+  } ->
   service { 'slapd':
-    ensure  => $service_ensure,
-    name    => $service_name,
-    enable  => $enabled,
-    require => Package['openldap-server'],
+    ensure => $service_ensure,
+    name => $service_name,
+    enable => $enabled
   }
-
 }
