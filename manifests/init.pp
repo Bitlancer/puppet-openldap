@@ -31,9 +31,7 @@ class openldap(
   $service_name    = $openldap::params::service_name
 ) inherits openldap::params{
 
-  package { 'openldap_client':
+  package { $client_packages:
     ensure => $package_ensure,
-    name   => $client_packages,
   }
-
 }
